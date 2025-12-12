@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enroll your child at NOAH Preschool, a premier early education center.">
+    <title>NOAH Preschool - Enrollment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 60px; /* Adjust for fixed header */
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff4040; /* Adjusted to match your image */
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-family: Arial, sans-serif; /* Professional font for nav links */
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4040; /* Orange hover to match theme */
+        }
+
+        /* Enrollment Section */
+        #enroll {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .enroll-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .enroll-container h2 {
+            color: #ff4040; /* Orange from image */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .enroll-container p {
+            margin-bottom: 30px;
+            color: #666;
+            font-family: Arial, sans-serif; /* Professional body text */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ff4040; /* Orange for labels */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .name-row {
+            display: flex;
+            gap: 20px; /* Space between First Name and Last Name fields */
+        }
+
+        .name-row .form-group {
+            flex: 1; /* Equal width for both fields */
+        }
+
+        button {
+            background-color: #ff4040; /* Orange button */
+            color: #ffffff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        button:hover {
+            background-color: #e53333; /* Slightly darker orange on hover */
+        }
+
+        .required {
+            color: #ff0000;
+            font-weight: bold;
+            margin-left: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            .nav-links a {
+                margin: 5px 0;
+            }
+            .enroll-container {
+                padding: 20px;
+            }
+            .name-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .name-row .form-group {
+                flex: none;
+            }
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #1A3C34; /* Dark teal background */
+            color: #d3d3d3; /* Light gray for body text */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-content .quick-links h3,
+        .footer-content .photo-gallery h3 {
+            color: #FFD700; /* Gold color for Quick Links and Photo Gallery headings */
+        }
+
+        .footer-content .column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-content .get-in-touch p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .footer-content .get-in-touch p::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .footer-content .get-in-touch p.location::before {
+            background-image: url('https://via.placeholder.com/20?text=📍');
+        }
+
+        .footer-content .get-in-touch p.phone::before {
+            background-image: url('https://via.placeholder.com/20?text=📞');
+        }
+
+        .footer-content .get-in-touch p.email::before {
+            background-image: url('https://via.placeholder.com/20?text=✉️');
+        }
+
+        .footer-content .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .footer-content .social-icons a {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #d3d3d3;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #1A3C34;
+        }
+
+        .footer-content .quick-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-content .quick-links li {
+            margin: 10px 0;
+        }
+
+        .footer-content .quick-links a {
+            color: #d3d3d3;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .footer-content .quick-links a::before {
+            content: '>';
+            color: #d3d3d3;
+        }
+
+        .footer-content .quick-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-content .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .footer-content .photo-gallery img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content .social-icons {
+                justify-content: center;
+            }
+
+            .footer-content .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">NOAH Preschool</div>
+            <div class="nav-links">
+                <a href="pss6.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="classes.html">Classes</a>
+                <a href="enroll.html">Enroll Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="enroll">
+        <div class="enroll-container">
+            <h2>Enrollment Application</h2>
+            <p>Please complete the form below to enroll your child at NOAH Preschool. All fields marked with <span class="required">*</span> are required.</p>
+            
+            <form id="enrollment-form" action="#" method="post" onsubmit="return validateForm(event)">
+                <div class="name-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name <span class="required">*</span></label>
+                        <input type="text" id="first-name" name="first-name" required>
+                        <div class="error" id="first-name-error">This field is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name <span class="required">*</span></label>
+                        <input type="text" id="last-name" name="last-name" required>
+                        <div class="error" id="last-name-error">This field is required.</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="child-age">Age <span class="required">*</span></label>
+                    <input type="number" id="child-age" name="child-age" min="2" max="7" required>
+                    <div class="error" id="child-age-error">Age must be between 2 and 7.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="email-error">Please enter a valid email address.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <div class="error" id="phone-error">Please enter a valid phone number.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="program">Preferred Program <span class="required">*</span></label>
+                    <select id="program" name="program" required>
+                        <option value="">Select a Program</option>
+                        <option value="playgroup">Playgroup</option>
+                        <option value="nursery">Nursery</option>
+                        <option value="jr-kg">Jr KG</option>
+                        <option value="sr-kg">Sr KG</option>
+                    </select>
+                    <div class="error" id="program-error">Please select a program.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information or Questions</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </div>
+                
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="column get-in-touch">
+                <h3>Get In Touch</h3>
+                <p class="location">N010 Old Apartment, Mayor City, Baroda</p>
+                <p class="phone">1234567890</p>
+                <p class="email">noah@test.com</p>
+                <div class="social-icons">
+                    <a href="#">🐦</a>
+                    <a href="#">📘</a>
+                    <a href="#">📺</a>
+                    <a href="#">🔗</a>
+                </div>
+            </div>
+            <div class="column quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="enroll.html">Enroll Now</a></li>
+                </ul>
+            </div>
+            <div class="column photo-gallery">
+                <h3>Photo Gallery</h3>
+                <img src="images/crayons.jpg" alt="Gallery Image 1">
+                <img src="images/cricket.jfif" alt="Gallery Image 2">
+                <img src="images/play.avif" alt="Gallery Image 3">
+                <img src="images/luffy.jfif" alt="Gallery Image 4">
+                <img src="images/library.jfif" alt="Gallery Image 5">
+                <img src="images/girl.webp" alt="Gallery Image 6">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+            const errors = document.getElementsByClassName('error');
+
+            // Hide all errors initially
+            for (let error of errors) {
+                error.style.display = 'none';
+            }
+
+            // Validate First Name
+            const firstName = document.getElementById('first-name').value;
+            if (!firstName) {
+                document.getElementById('first-name-error').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Last Name
+            const lastName = document.getElementById('last-name').value;
+            if (!lastName) {
+                document.getElementById('last-name-error').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Age
+            const childAge = document.getElementById('child-age').value;
+            if (!childAge || childAge < 2 || childAge > 7) {
+                document.getElementById('child-age-error').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Phone
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phone-error').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Program
+            const program = document.getElementById('program').value;
+            if (!program) {
+                document.getElementById('program-error').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully! (This is a demo, no data is sent.)');
+                document.getElementById('enrollment-form').reset();
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
